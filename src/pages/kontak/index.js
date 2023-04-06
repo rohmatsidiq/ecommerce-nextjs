@@ -1,9 +1,13 @@
-import React from 'react'
+import { HeadComponent, Navbar } from "@/components";
+import React from "react";
 
 function kontak() {
   return (
-    <div>kontak</div>
-  )
+    <div>
+      <HeadComponent title="Kontak" />
+      <Navbar />
+    </div>
+  );
 }
 
-export default kontak
+export default kontak;

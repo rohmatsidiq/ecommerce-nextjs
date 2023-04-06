@@ -1,9 +1,13 @@
-import React from 'react'
+import { HeadComponent, Navbar } from "@/components";
+import React from "react";
 
 function products() {
   return (
-    <div>products</div>
-  )
+    <div>
+      <HeadComponent title="Produk" />
+      <Navbar />
+    </div>
+  );
 }
 
-export default products
+export default products;

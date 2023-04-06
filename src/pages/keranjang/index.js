@@ -1,9 +1,13 @@
-import React from 'react'
+import { HeadComponent, Navbar } from "@/components";
+import React from "react";
 
 function keranjang() {
   return (
-    <div>keranjang</div>
-  )
+    <div>
+      <HeadComponent title="Keranjang" />
+      <Navbar />
+    </div>
+  );
 }
 
-export default keranjang
+export default keranjang;
