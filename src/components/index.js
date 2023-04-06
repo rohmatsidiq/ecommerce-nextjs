@@ -1,4 +1,4 @@
-import HeadComponent from "./HeadComponent";
-import Navbar from "./Navbar";
+import HeadComponent from "./headComponent";
+import Navbar from "./navbar";
 
 export { HeadComponent, Navbar };
