@@ -21,8 +21,8 @@ function Navbar() {
           <div
             className={
               showMenu
-                ? "absolute sm:static flex flex-col sm:flex-row gap-5 bg-white sm:bg-nonee shadow-lg sm:shadow-none top-[76px] sm:top-0 w-1/2 right-0 justify-center sm:justify-end text-end p-5 sm:p-0 rounded-es-3xl sm:rounded-none duration-500"
-                : "absolute sm:static flex flex-col sm:flex-row gap-5 bg-white sm:bg-nonee shadow-lg sm:shadow-none top-[76px] sm:top-0 w-1/2 right-[-100%] justify-center sm:justify-end text-end p-5 sm:p-0 rounded-es-3xl sm:rounded-none duration-500"
+                ? "absolute sm:static flex flex-col sm:flex-row gap-5 bg-white sm:bg-nonee shadow-lg sm:shadow-none top-[76px] sm:top-0 w-1/2 right-0 justify-center sm:justify-end text-end p-5 sm:p-0 rounded-es-3xl sm:rounded-none"
+                : "absolute sm:static hidden sm:flex flex-col sm:flex-row gap-5 bg-white sm:bg-nonee shadow-lg sm:shadow-none top-[76px] sm:top-0 w-1/2 justify-center sm:justify-end text-end p-5 sm:p-0 rounded-es-3xl sm:rounded-none"
             }
           >
             <Link
