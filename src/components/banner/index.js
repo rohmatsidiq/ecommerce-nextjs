@@ -1,64 +1,26 @@
-import { React, useState } from "react";
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
+import React from 'react'
 
 function Banner() {
-  const words = ["satu", "dua", "tiga", "empat", "lima"];
-  const [count, setCount] = useState(1);
-
-  const handleNext = () => {
-    if (count < words.length) {
-      setCount(count + 1);
-    } else if (count == words.length) {
-      setCount(1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    } else if (count == 1) {
-      setCount(words.length);
-    }
-  };
-
-  const handleSlector = (index) => {
-    setCount(index + 1);
-  };
-
   return (
-    <div className="max-w-[1200px] w-full mx-auto p-4 mt-3">
-      <div className="bg-gray-300 w-full h-64 rounded-3xl flex justify-center items-center text-3xl font-bold relative">
-        <p>{count}</p>
-        <button
-          className="bg-white opacity-80 text-4xl rounded-full absolute left-[10px]"
-          onClick={handlePrevious}
-        >
-          <MdOutlineKeyboardArrowLeft />
-        </button>
-        <button
-          className="bg-white opacity-80 text-4xl rounded-full absolute right-[10px]"
-          onClick={handleNext}
-        >
-          <MdOutlineKeyboardArrowRight />
-        </button>
-      </div>
-      <div className="flex gap-2 justify-center mt-5 ">
-        {words.map((item, index) => (
-          <div key={index}>
-            <button
-              onClick={() => {
-                handleSlector(index);
-              }}
-              className="bg-gray-500 w-6 h-1 rounded-full"
-            ></button>
-          </div>
-        ))}
-      </div>
+    <div className="max-w-[1200px] h-full mx-auto p-4 overflow-x-scroll flex gap-5">
+      <img
+        className="rounded-3xl w-5/6"
+        src="https://images.unsplash.com/photo-1506765515384-028b60a970df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      />
+      <img
+        className="rounded-3xl w-5/6"
+        src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmFubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      />
+      <img
+        className="rounded-3xl w-5/6"
+        src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhbm5lcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+      />
+      <img
+        className="rounded-3xl w-5/6"
+        src="https://images.unsplash.com/photo-1614851099175-e5b30eb6f696?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhbm5lcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+      />
     </div>
   );
 }
 
-export default Banner;
+export default Banner
