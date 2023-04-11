@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Productcard({namaProduk, hargaProduk, stockProduk, gambar}) {
   return (
-    <Link href="/">
+    <Link href="/detail-produk/1">
       <div className="w-full bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-1 duration-200 hover:shadow-sky-200">
         <div className="w-full h-full object-cover">
           <img
