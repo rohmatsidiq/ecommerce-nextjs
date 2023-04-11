@@ -9,7 +9,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-white w-screen shadow-lg">
+    <div className="bg-white w-screen shadow-lg fixed top-0 z-50">
       <div className="max-w-[1200px] mx-auto p-4">
         <div className="flex justify-between items-center text-sky-500">
           {/* Logo */}
