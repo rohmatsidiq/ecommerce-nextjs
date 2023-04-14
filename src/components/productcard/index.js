@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-function Productcard({namaProduk, hargaProduk, stockProduk, gambar}) {
+function Productcard({namaProduk, hargaProduk, stockProduk, gambar,id}) {
   return (
-    <Link href="/detail-produk/1">
+    <Link href={`/detail-produk/${id}`}>
       <div className="w-full bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-1 duration-200 hover:shadow-sky-200">
         <div className="w-full h-full object-cover">
           <img
