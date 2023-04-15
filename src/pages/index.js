@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { HeadComponent, Navbar, Banner, Productcard } from "../components";
 import axios from "axios";
-// import Image from 'next/image'
-// import styles from '@/styles/Home.module.css'
 
 export default function Home() {
   const [produk, setProduk] = useState([]);
@@ -16,7 +14,6 @@ export default function Home() {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     getProduk();
