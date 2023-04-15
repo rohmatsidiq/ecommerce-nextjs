@@ -1,4 +1,4 @@
-import { HeadComponent } from "@/components";
+import { AdminProduk, HeadComponent } from "@/components";
 import React, { useState } from "react";
 import {
   FcHome,
@@ -31,7 +31,7 @@ export default function Admin() {
           <button
             onClick={() => {
               setShowNav(false);
-              setCard('dashboard')
+              setCard("dashboard");
             }}
             className="hover:translate-x-1 duration-150 flex gap-1 items-center mb-3 w-full"
           >
@@ -83,9 +83,7 @@ export default function Admin() {
           >
             <FcMenu />
           </button>
-          <div className="bg-white w-full rounded-2xl p-4">
-            <h1 className="text-2xl font-bold">{card}</h1>
-          </div>
+          {card == "produk" && <AdminProduk />}
         </div>
       </div>
     </div>
