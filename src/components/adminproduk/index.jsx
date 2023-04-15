@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
 
-export default function AdminProduk() {
+export default function AdminProduk({ setCard }) {
   const [produk, setProduk] = useState([]);
   const getProduk = async () => {
     try {
@@ -19,10 +19,25 @@ export default function AdminProduk() {
     getProduk();
   }, []);
 
+  if (!produk) {
+    return;
+  }
+
   return (
     <div>
-      <h1 className="text-2xl font-bold">Produk</h1>
-      <table className="w-full bg-white rounded-2xl text-center mt-5">
+      <div className="flex justify-between">
+        <h1 className="text-2xl font-bold">Produk</h1>
+        <button
+          onClick={() => {
+            setCard("tambahproduk");
+          }}
+          className="bg-sky-500 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-300 flex items-center gap-1 hover:scale-105"
+        >
+          <AiFillPlusCircle className="text-xl" />
+          Tambah Produk
+        </button>
+      </div>
+      <table className="w-full bg-white rounded-2xl text-center mt-5 h-100">
         <thead>
           <tr className="border-b-2">
             <th className="p-4">Gambar</th>

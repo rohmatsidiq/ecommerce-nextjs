@@ -3,7 +3,9 @@ import pool from "@/database/pool";
 export default function handler(req, res) {
   const method = req.method;
   const nama_produk = req.body.nama_produk;
+  const stock_produk = req.body.stock_produk;
   const deskripsi_produk = req.body.deskripsi_produk;
+  const gambar_produk = req.body.gambar_produk;
   const harga_produk = req.body.harga_produk;
   const harga_produk_display = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -12,7 +14,7 @@ export default function handler(req, res) {
 
   if (method === "POST") {
     pool.query(
-      `INSERT INTO produk (nama_produk, deskripsi_produk, harga_produk, harga_produk_display) VALUES ('${nama_produk}', '${deskripsi_produk}', '${harga_produk}', '${harga_produk_display}')`,
+      `INSERT INTO produk (nama_produk, deskripsi_produk, harga_produk, harga_produk_display, gambar_produk, stock_produk) VALUES ('${nama_produk}', '${deskripsi_produk}', ${harga_produk}, '${harga_produk_display}', '${gambar_produk}', ${stock_produk})`,
       (err, result) => {
         if (err) {
           res.json({

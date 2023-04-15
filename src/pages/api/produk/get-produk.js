@@ -11,7 +11,7 @@ export default function handler(req, res) {
       }
       res.json({
         message: "Berhasil mendapatkan data",
-        data: result,
+        data: result.reverse(),
       });
     });
   } else {

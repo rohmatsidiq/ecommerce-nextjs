@@ -1,4 +1,4 @@
-import { AdminProduk, HeadComponent } from "@/components";
+import { AdminProduk, AdminTambahProduk, HeadComponent } from "@/components";
 import React, { useState } from "react";
 import {
   FcHome,
@@ -22,7 +22,7 @@ export default function Admin() {
           className={
             showNav
               ? "bg-white min-h-screen w-60 shadow-xl px-4 sm:static absolute"
-              : "bg-white min-h-screen w-60 shadow-xl px-4 sm:inline-block static  hidden"
+              : "bg-white min-h-screen w-60 shadow-xl px-4 sm:inline-block static hidden"
           }
         >
           <h1 className="text-center font-bold text-3xl my-5 text-sky-500">
@@ -33,9 +33,9 @@ export default function Admin() {
               setShowNav(false);
               setCard("dashboard");
             }}
-            className="hover:translate-x-1 duration-150 flex gap-1 items-center mb-3 w-full"
+            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
           >
-            <FcHome />
+            <FcHome className="text-2xl" />
             Dashboard
           </button>
           <button
@@ -43,9 +43,9 @@ export default function Admin() {
               setShowNav(false);
               setCard("produk");
             }}
-            className="hover:translate-x-1 duration-150 flex gap-1 items-center mb-3 w-full"
+            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
           >
-            <FcShop />
+            <FcShop className="text-2xl" />
             Produk
           </button>
           <button
@@ -53,9 +53,9 @@ export default function Admin() {
               setShowNav(false);
               setCard("transaksi");
             }}
-            className="hover:translate-x-1 duration-150 flex gap-1 items-center mb-3 w-full"
+            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
           >
-            <FcSalesPerformance />
+            <FcSalesPerformance className="text-2xl" />
             Transaksi
           </button>
           <button
@@ -63,9 +63,9 @@ export default function Admin() {
               setShowNav(false);
               setCard("pelanggan");
             }}
-            className="hover:translate-x-1 duration-150 flex gap-1 items-center mb-3 w-full"
+            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
           >
-            <FcConferenceCall />
+            <FcConferenceCall className="text-2xl" />
             Pelanggan
           </button>
           <button className="bg-red-500 text-white w-full py-2 rounded-full hover:bg-red-600 hover:shadow-lg hover:shadow-red-200 mt-3 hover:scale-105">
@@ -83,7 +83,8 @@ export default function Admin() {
           >
             <FcMenu />
           </button>
-          {card == "produk" && <AdminProduk />}
+          {card == "produk" && <AdminProduk setCard={setCard} />}
+          {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
         </div>
       </div>
     </div>
