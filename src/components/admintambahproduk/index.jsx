@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
+import { Notif } from "..";
 
 function AdminTambahProduk({ setCard }) {
+  const [showNotif, setShowNotif] = useState(false);
   const [data, setData] = useState({
     nama_produk: "",
     harga_produk: "",
@@ -33,7 +35,12 @@ function AdminTambahProduk({ setCard }) {
         deskripsi_produk: "",
         gambar_produk: "",
       });
-      setCard("produk");
+      setShowNotif(true);
+
+      setTimeout(() => {
+        setShowNotif(false);
+        setCard("produk");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +48,7 @@ function AdminTambahProduk({ setCard }) {
 
   return (
     <div>
+      {showNotif && <Notif content="Produk Berhasil Disimpan" />}
       <h1 className="text-2xl font-bold">Tambah Produk</h1>
       <div className="bg-white p-4 rounded-xl my-3">
         <div className="flex flex-col mb-3">

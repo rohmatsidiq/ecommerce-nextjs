@@ -4,6 +4,7 @@ import Banner from "./banner";
 import Productcard from "./productcard";
 import AdminProduk from "./adminproduk";
 import AdminTambahProduk from "./admintambahproduk";
+import Notif from "./notif";
 
 export {
   HeadComponent,
@@ -12,4 +13,5 @@ export {
   Productcard,
   AdminProduk,
   AdminTambahProduk,
+  Notif
 };
