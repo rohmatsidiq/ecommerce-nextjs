@@ -38,6 +38,7 @@ export default function AdminProduk({ setCard }) {
           idProduk={idProduk}
           setIdProduk={setIdProduk}
           setShowFormEdit={setShowFormEdit}
+          getProduk={getProduk}
         />
       )}
       <div className="flex justify-between items-center gap-4">
