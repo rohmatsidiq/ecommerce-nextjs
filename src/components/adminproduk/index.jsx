@@ -4,6 +4,7 @@ import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
 
 export default function AdminProduk({ setCard }) {
   const [produk, setProduk] = useState([]);
+  const [search, setSearch] = useState("");
   const getProduk = async () => {
     try {
       const result = await axios.get(
@@ -13,6 +14,10 @@ export default function AdminProduk({ setCard }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
@@ -25,8 +30,14 @@ export default function AdminProduk({ setCard }) {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center gap-4">
         <h1 className="text-2xl font-bold">Produk</h1>
+        <input
+          type="text"
+          onChange={handleSearch}
+          placeholder="Cari"
+          className="px-4 py-2 rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
+        />
         <button
           onClick={() => {
             setCard("tambahproduk");
@@ -37,7 +48,7 @@ export default function AdminProduk({ setCard }) {
           Tambah Produk
         </button>
       </div>
-      <table className="w-full bg-white rounded-2xl text-center mt-5 h-100">
+      <table className="w-full bg-white text-center mt-5 h-100">
         <thead>
           <tr className="border-b-2">
             <th className="p-4">Gambar</th>
@@ -48,26 +59,32 @@ export default function AdminProduk({ setCard }) {
           </tr>
         </thead>
         <tbody>
-          {produk.map((e) => (
-            <tr key={e.id_produk}>
-              <td className="p-4 flex justify-center">
-                <div className="bg-gray-400 w-12 h-12"></div>
-              </td>
-              <td className="p-4">{e.nama_produk}</td>
-              <td className="p-4">{e.stock_produk}</td>
-              <td className="p-4">{e.harga_produk_display}</td>
-              <td className="p-4">
-                <div className=" flex justify-center items-center gap-2">
-                  <button className="bg-yellow-400 p-2 rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105">
-                    <AiFillEdit />
-                  </button>
-                  <button className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105">
-                    <AiFillDelete />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
+          {produk
+            .filter((i) => {
+              return search.toLowerCase() === ""
+                ? i
+                : i.nama_produk.toLowerCase().includes(search);
+            })
+            .map((e) => (
+              <tr key={e.id_produk} className="border-b-2">
+                <td className="p-4 flex justify-center">
+                  <div className="bg-gray-400 w-12 h-12"></div>
+                </td>
+                <td className="p-4">{e.nama_produk}</td>
+                <td className="p-4">{e.stock_produk}</td>
+                <td className="p-4">{e.harga_produk_display}</td>
+                <td className="p-4">
+                  <div className=" flex justify-center items-center gap-2">
+                    <button className="bg-yellow-400 p-2 rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105">
+                      <AiFillEdit />
+                    </button>
+                    <button className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105">
+                      <AiFillDelete />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
