@@ -1,0 +1,6 @@
+{
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+  "window.autoDetectColorScheme": false,
+  "color-highlight.matchRgbWithNoFunction": false,
+  "color-highlight.matchWords": false
+}

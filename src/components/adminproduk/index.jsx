@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
+import { Formedit } from "..";
 
 export default function AdminProduk({ setCard }) {
   const [produk, setProduk] = useState([]);
   const [search, setSearch] = useState("");
+  const [idProduk, setIdProduk] = useState("");
+  const [showFormEdit, setShowFormEdit] = useState(false);
   const getProduk = async () => {
     try {
       const result = await axios.get(
@@ -30,6 +33,13 @@ export default function AdminProduk({ setCard }) {
 
   return (
     <div>
+      {showFormEdit && (
+        <Formedit
+          idProduk={idProduk}
+          setIdProduk={setIdProduk}
+          setShowFormEdit={setShowFormEdit}
+        />
+      )}
       <div className="flex justify-between items-center gap-4">
         <h1 className="text-2xl font-bold">Produk</h1>
         <input
@@ -75,7 +85,13 @@ export default function AdminProduk({ setCard }) {
                 <td className="p-4">{e.harga_produk_display}</td>
                 <td className="p-4">
                   <div className=" flex justify-center items-center gap-2">
-                    <button className="bg-yellow-400 p-2 rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105">
+                    <button
+                      onClick={() => {
+                        setShowFormEdit(true);
+                        setIdProduk(e.id_produk);
+                      }}
+                      className="bg-yellow-400 p-2 rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105"
+                    >
                       <AiFillEdit />
                     </button>
                     <button className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105">

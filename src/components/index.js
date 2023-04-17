@@ -5,6 +5,7 @@ import Productcard from "./productcard";
 import AdminProduk from "./adminproduk";
 import AdminTambahProduk from "./admintambahproduk";
 import Notif from "./notif";
+import Formedit from "./formedit";
 
 export {
   HeadComponent,
@@ -13,5 +14,6 @@ export {
   Productcard,
   AdminProduk,
   AdminTambahProduk,
-  Notif
+  Notif,
+  Formedit,
 };
