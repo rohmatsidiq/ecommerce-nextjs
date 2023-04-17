@@ -1,6 +1,7 @@
 import pool from "@/database/pool";
 
 export default function handler(req, res) {
+  const { id } = req.query;
   const method = req.method;
   const nama_produk = req.body.nama_produk;
   const stock_produk = req.body.stock_produk;
@@ -12,9 +13,9 @@ export default function handler(req, res) {
     currency: "IDR",
   }).format(harga_produk);
 
-  if (method === "POST") {
+  if (method === "PUT") {
     pool.query(
-      `INSERT INTO produk (nama_produk, deskripsi_produk, harga_produk, harga_produk_display, gambar_produk, stock_produk) VALUES ('${nama_produk}', '${deskripsi_produk}', ${harga_produk}, '${harga_produk_display}', '${gambar_produk}', ${stock_produk})`,
+      `UPDATE produk SET nama_produk='${nama_produk}', deskripsi_produk='${deskripsi_produk}', harga_produk=${harga_produk}, harga_produk_display='${harga_produk_display}', gambar_produk='${gambar_produk}', stock_produk=${stock_produk} WHERE id_produk=${id}`,
       (err, result) => {
         if (err) {
           res.json({
