@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
-import { Formedit } from "..";
+import { Confirmdelete, Formedit, Notif } from "..";
 
 export default function AdminProduk({ setCard }) {
   const [produk, setProduk] = useState([]);
+  const [confrimDelete, setConfirmDelete] = useState(false);
+  const [showNotif, setShowNotif] = useState(false);
   const [search, setSearch] = useState("");
   const [idProduk, setIdProduk] = useState("");
   const [showFormEdit, setShowFormEdit] = useState(false);
@@ -17,6 +19,24 @@ export default function AdminProduk({ setCard }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const deleteProduk = async (id_produk) => {
+    setIdProduk(id_produk);
+    setConfirmDelete(true);
+
+    // try {
+    //   await axios.delete(
+    //     `http://localhost:3000/api/produk/delete-produk/${id_produk}`
+    //   );
+    //   setShowNotif(true);
+    //   setTimeout(() => {
+    //     getProduk();
+    //     setShowNotif(false);
+    //   }, 2000);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const handleSearch = (e) => {
@@ -33,6 +53,16 @@ export default function AdminProduk({ setCard }) {
 
   return (
     <div>
+      {confrimDelete && (
+        <Confirmdelete
+          idProduk={idProduk}
+          setIdProduk={setIdProduk}
+          setConfirmDelete={setConfirmDelete}
+          setShowNotif={setShowNotif}
+          getProduk={getProduk}
+        />
+      )}
+      {showNotif && <Notif content="Produk Berhasil Dihapus" />}
       {showFormEdit && (
         <Formedit
           idProduk={idProduk}
@@ -95,7 +125,12 @@ export default function AdminProduk({ setCard }) {
                     >
                       <AiFillEdit />
                     </button>
-                    <button className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105">
+                    <button
+                      onClick={() => {
+                        deleteProduk(e.id_produk);
+                      }}
+                      className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105"
+                    >
                       <AiFillDelete />
                     </button>
                   </div>
