@@ -21,8 +21,8 @@ export default function Admin() {
         <div
           className={
             showNav
-              ? "bg-white min-h-screen w-60 shadow-xl px-4 sm:static absolute"
-              : "bg-white min-h-screen w-60 shadow-xl px-4 sm:inline-block static hidden"
+              ? "bg-white min-h-screen w-60 shadow-xl px-4 sm:static fixed z-50"
+              : "bg-white min-h-screen w-60 shadow-xl px-4 sm:inline-block fixed sm:static hidden"
           }
         >
           <h1 className="text-center font-bold text-3xl my-5 text-sky-500">
@@ -72,19 +72,19 @@ export default function Admin() {
             Logout
           </button>
         </div>
-        <div className="p-4 w-full">
-          <button
-            onClick={handleShowNav}
-            className={
-              showNav
-                ? "text-3xl mb-3 p-1 rounded-lg sm:hidden translate-x-60"
-                : "text-3xl mb-3 p-1 rounded-lg sm:hidden"
-            }
-          >
-            <FcMenu />
-          </button>
-          {card == "produk" && <AdminProduk setCard={setCard} />}
-          {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
+        <div className="w-full">
+          <div className="bg-gray-200 px-2">
+            <button
+              onClick={handleShowNav}
+              className="text-3xl p-1 rounded-lg sm:hidden"
+            >
+              <FcMenu />
+            </button>
+          </div>
+          <div className="p-4">
+            {card == "produk" && <AdminProduk setCard={setCard} />}
+            {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
+          </div>
         </div>
       </div>
     </div>

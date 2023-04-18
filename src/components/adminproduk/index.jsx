@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
-import { Confirmdelete, Formedit, Notif } from "..";
+import { Confirmdelete, Formedit, Formtambahproduk, Notif } from "..";
 
 export default function AdminProduk({ setCard }) {
   const [produk, setProduk] = useState([]);
@@ -10,6 +10,7 @@ export default function AdminProduk({ setCard }) {
   const [search, setSearch] = useState("");
   const [idProduk, setIdProduk] = useState("");
   const [showFormEdit, setShowFormEdit] = useState(false);
+  const [showFormTambahProduk, setShowFormTambahProduk] = useState(false);
   const getProduk = async () => {
     try {
       const result = await axios.get(
@@ -24,19 +25,6 @@ export default function AdminProduk({ setCard }) {
   const deleteProduk = async (id_produk) => {
     setIdProduk(id_produk);
     setConfirmDelete(true);
-
-    // try {
-    //   await axios.delete(
-    //     `http://localhost:3000/api/produk/delete-produk/${id_produk}`
-    //   );
-    //   setShowNotif(true);
-    //   setTimeout(() => {
-    //     getProduk();
-    //     setShowNotif(false);
-    //   }, 2000);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const handleSearch = (e) => {
@@ -52,7 +40,7 @@ export default function AdminProduk({ setCard }) {
   }
 
   return (
-    <div>
+    <div className="">
       {confrimDelete && (
         <Confirmdelete
           idProduk={idProduk}
@@ -63,6 +51,13 @@ export default function AdminProduk({ setCard }) {
         />
       )}
       {showNotif && <Notif content="Produk Berhasil Dihapus" />}
+      {showFormTambahProduk && (
+        <Formtambahproduk
+          setShowFormTambahProduk={setShowFormTambahProduk}
+          setShowNotif={setShowNotif}
+          getProduk={getProduk}
+        />
+      )}
       {showFormEdit && (
         <Formedit
           idProduk={idProduk}
@@ -71,74 +66,73 @@ export default function AdminProduk({ setCard }) {
           getProduk={getProduk}
         />
       )}
-      <div className="flex justify-between items-center gap-4">
-        <h1 className="text-2xl font-bold">Produk</h1>
+      <h1 className="text-2xl font-bold mb-3">Produk</h1>
+      <div className="flex gap-2 items-center mb-3">
         <input
           type="text"
           onChange={handleSearch}
           placeholder="Cari"
-          className="px-4 py-2 rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
+          className="px-4 py-2 w-full rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
         />
         <button
           onClick={() => {
-            setCard("tambahproduk");
+            setShowFormTambahProduk(true);
           }}
           className="bg-sky-500 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-300 flex items-center gap-1 hover:scale-105"
         >
           <AiFillPlusCircle className="text-xl" />
-          Tambah Produk
+          Tambah
         </button>
       </div>
-      <table className="w-full bg-white text-center mt-5 h-100">
-        <thead>
-          <tr className="border-b-2">
-            <th className="p-4">Gambar</th>
-            <th className="p-4">Nama Produk</th>
-            <th className="p-4">Stock</th>
-            <th className="p-4">Harga</th>
-            <th className="p-4">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {produk
-            .filter((i) => {
-              return search.toLowerCase() === ""
-                ? i
-                : i.nama_produk.toLowerCase().includes(search);
-            })
-            .map((e) => (
-              <tr key={e.id_produk} className="border-b-2">
-                <td className="p-4 flex justify-center">
-                  <div className="bg-gray-400 w-12 h-12"></div>
-                </td>
-                <td className="p-4">{e.nama_produk}</td>
-                <td className="p-4">{e.stock_produk}</td>
-                <td className="p-4">{e.harga_produk_display}</td>
-                <td className="p-4">
-                  <div className=" flex justify-center items-center gap-2">
-                    <button
-                      onClick={() => {
-                        setShowFormEdit(true);
-                        setIdProduk(e.id_produk);
-                      }}
-                      className="bg-yellow-400 p-2 rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105"
-                    >
-                      <AiFillEdit />
-                    </button>
-                    <button
-                      onClick={() => {
-                        deleteProduk(e.id_produk);
-                      }}
-                      className="bg-red-500 p-2 rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105"
-                    >
-                      <AiFillDelete />
-                    </button>
+      <div>
+        {produk
+          .filter((i) => {
+            return search.toLowerCase() === ""
+              ? i
+              : i.nama_produk.toLowerCase().includes(search);
+          })
+          .map((e) => (
+            <div key={e.id_produk} className="bg-white rounded-2xl p-3 mb-3">
+              <div className="grid grid-cols-12 gap-3">
+                <div className="col-span-4 sm:col-span-1">
+                  <div className="w-full h-full">
+                    <img
+                      className="w-full h-full object-cover rounded-2xl"
+                      src="https://jualanku.link/admin/get_file/c93d35201c4a11edba7fe7146056076c_2509.png"
+                      alt=""
+                    />
                   </div>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                </div>
+                <div className="col-span-8 sm:col-span-11">
+                  <div className="sm:grid sm:grid-cols-4">
+                    <p className="">{e.nama_produk}</p>
+                    <p className="">Stock: {e.stock_produk} pcs</p>
+                    <p className="">{e.harga_produk_display}</p>
+                    <div className="w-full flex">
+                      <button
+                        onClick={() => {
+                          setShowFormEdit(true);
+                          setIdProduk(e.id_produk);
+                        }}
+                        className="bg-yellow-400 py-1 px-3 m-1  rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105 flex items-center gap-1"
+                      >
+                        <AiFillEdit className="text-xl" /> Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          deleteProduk(e.id_produk);
+                        }}
+                        className="bg-red-500 py-1 px-3 m-1  rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105 flex items-center gap-1"
+                      >
+                        <AiFillDelete className="text-xl" /> Hapus
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

@@ -3,10 +3,10 @@ import Navbar from "./navbar";
 import Banner from "./banner";
 import Productcard from "./productcard";
 import AdminProduk from "./adminproduk";
-import AdminTambahProduk from "./admintambahproduk";
 import Notif from "./notif";
 import Formedit from "./formedit";
 import Confirmdelete from "./confirmdelete";
+import Formtambahproduk from "./formtambahproduk";
 
 export {
   HeadComponent,
@@ -14,8 +14,8 @@ export {
   Banner,
   Productcard,
   AdminProduk,
-  AdminTambahProduk,
   Notif,
   Formedit,
   Confirmdelete,
+  Formtambahproduk,
 };

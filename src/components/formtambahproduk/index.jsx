@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import { AiFillSave } from "react-icons/ai";
+import { AiFillSave, AiOutlineClose } from "react-icons/ai";
 import { Notif } from "..";
 
-function AdminTambahProduk({ setCard }) {
+export default function Formtambahproduk({
+  getProduk,
+  setShowFormTambahProduk,
+}) {
   const [showNotif, setShowNotif] = useState(false);
   const [data, setData] = useState({
     nama_produk: "",
@@ -28,7 +31,7 @@ function AdminTambahProduk({ setCard }) {
   const handleSave = async () => {
     try {
       await axios.post("http://localhost:3000/api/produk/post-produk", data);
-      await setData({
+      setData({
         nama_produk: "",
         harga_produk: "",
         stock_produk: "",
@@ -36,10 +39,11 @@ function AdminTambahProduk({ setCard }) {
         gambar_produk: "",
       });
       setShowNotif(true);
+      getProduk();
 
       setTimeout(() => {
+        setShowFormTambahProduk(false);
         setShowNotif(false);
-        setCard("produk");
       }, 2000);
     } catch (error) {
       console.log(error);
@@ -47,10 +51,10 @@ function AdminTambahProduk({ setCard }) {
   };
 
   return (
-    <div>
-      {showNotif && <Notif content="Produk Berhasil Disimpan" />}
-      <h1 className="text-2xl font-bold">Tambah Produk</h1>
-      <div className="bg-white p-4 rounded-xl my-3">
+    <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+      {showNotif && <Notif content="Produk Berhasil Ditambah" />}
+      <div className="bg-white p-5 rounded-3xl">
+        <h1 className="text-center text-2xl">Tambah Produk</h1>
         <div className="flex flex-col mb-3">
           <label htmlFor="nama_produk">Nama Produk</label>
           <input
@@ -59,7 +63,7 @@ function AdminTambahProduk({ setCard }) {
             type="text"
             id="nama_produk"
             name="nama_produk"
-            value={data.nama_produk}
+            defaultValue={data.nama_produk}
           />
         </div>
 
@@ -72,7 +76,7 @@ function AdminTambahProduk({ setCard }) {
               type="number"
               id="harga_produk"
               name="harga_produk"
-              value={data.harga_produk}
+              defaultValue={data.harga_produk}
             />
           </div>
           <div className="flex flex-col mb-3">
@@ -83,7 +87,7 @@ function AdminTambahProduk({ setCard }) {
               type="number"
               id="stock_produk"
               name="stock_produk"
-              value={data.stock_produk}
+              defaultValue={data.stock_produk}
             />
           </div>
         </div>
@@ -99,20 +103,30 @@ function AdminTambahProduk({ setCard }) {
             type="text"
             id="deskripsi_produk"
             name="deskripsi_produk"
-            value={data.deskripsi_produk}
+            defaultValue={data.deskripsi_produk}
           ></textarea>
         </div>
 
-        <button
-          onClick={handleSave}
-          className="bg-sky-500 text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
-        >
-          <AiFillSave className="text-2xl" />
-          Simpan
-        </button>
+        <div className="flex justify-between">
+          <button
+            onClick={() => {
+              setShowFormTambahProduk(false);
+            }}
+            className="bg-sky-500 text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+          >
+            <AiOutlineClose className="text-2xl" />
+            Batal
+          </button>
+
+          <button
+            onClick={handleSave}
+            className="bg-sky-500 text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+          >
+            <AiFillSave className="text-2xl" />
+            Simpan
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-
-export default AdminTambahProduk;

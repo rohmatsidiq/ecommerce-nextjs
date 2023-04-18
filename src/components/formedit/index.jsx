@@ -76,7 +76,7 @@ export default function Formedit({
   }, []);
 
   return (
-    <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       {showNotif && <Notif content="Produk Berhasil Diedit" />}
       <div className="bg-white p-5 rounded-3xl">
         <h1 className="text-center text-2xl">Edit Produk</h1>
