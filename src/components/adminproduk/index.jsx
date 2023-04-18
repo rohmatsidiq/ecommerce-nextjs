@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
 import { Confirmdelete, Formedit, Formtambahproduk, Notif } from "..";
 
-export default function AdminProduk({ setCard }) {
+export default function AdminProduk() {
   const [produk, setProduk] = useState([]);
   const [confrimDelete, setConfirmDelete] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
@@ -14,7 +14,7 @@ export default function AdminProduk({ setCard }) {
   const getProduk = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:3000/api/produk/get-produk"
+        "../api/produk/get-produk"
       );
       setProduk(result.data.data);
     } catch (error) {

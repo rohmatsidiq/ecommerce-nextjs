@@ -33,7 +33,7 @@ export default function Formedit({
   const handleSave = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/produk/put-produk/${idProduk}`,
+        `../api/produk/put-produk/${idProduk}`,
         data
       );
       setData({
@@ -63,7 +63,7 @@ export default function Formedit({
   const getData = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3000/api/produk/get-produk-by-id/${idProduk}`
+        `../api/produk/get-produk-by-id/${idProduk}`
       );
       setData(result.data.data[0]);
     } catch (error) {

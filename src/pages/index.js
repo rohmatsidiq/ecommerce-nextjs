@@ -6,9 +6,7 @@ export default function Home() {
   const [produk, setProduk] = useState([]);
   const getProduk = async () => {
     try {
-      const result = await axios.get(
-        "http://localhost:3000/api/produk/get-produk"
-      );
+      const result = await axios.get("api/produk/get-produk");
       setProduk(result.data.data);
     } catch (error) {
       console.log(error);

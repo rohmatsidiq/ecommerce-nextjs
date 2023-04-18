@@ -30,7 +30,7 @@ export default function Formtambahproduk({
 
   const handleSave = async () => {
     try {
-      await axios.post("http://localhost:3000/api/produk/post-produk", data);
+      await axios.post("../api/produk/post-produk", data);
       setData({
         nama_produk: "",
         harga_produk: "",

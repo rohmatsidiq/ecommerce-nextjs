@@ -12,7 +12,7 @@ export default function Confirmdelete({
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/produk/delete-produk/${idProduk}`
+        `../api/produk/delete-produk/${idProduk}`
       );
       setIdProduk("");
       setShowNotif(true);
