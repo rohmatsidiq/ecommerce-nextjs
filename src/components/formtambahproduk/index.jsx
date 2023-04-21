@@ -14,6 +14,10 @@ export default function Formtambahproduk({
     stock_produk: "",
     deskripsi_produk: "",
     gambar_produk: "",
+    gambar_produk_2: "",
+    gambar_produk_3: "",
+    gambar_produk_4: "",
+    gambar_produk_5: "",
   });
 
   const handleOnChange = (e) => {
@@ -27,6 +31,14 @@ export default function Formtambahproduk({
       setData({ ...data, deskripsi_produk: e.target.value });
     } else if (e.target.name == "gambar_produk") {
       setData({ ...data, gambar_produk: e.target.value });
+    } else if (e.target.name == "gambar_produk_2") {
+      setData({ ...data, gambar_produk_2: e.target.value });
+    } else if (e.target.name == "gambar_produk_3") {
+      setData({ ...data, gambar_produk_3: e.target.value });
+    } else if (e.target.name == "gambar_produk_4") {
+      setData({ ...data, gambar_produk_4: e.target.value });
+    } else if (e.target.name == "gambar_produk_5") {
+      setData({ ...data, gambar_produk_5: e.target.value });
     }
   };
 
@@ -39,6 +51,10 @@ export default function Formtambahproduk({
         stock_produk: "",
         deskripsi_produk: "",
         gambar_produk: "",
+        gambar_produk_2: "",
+        gambar_produk_3: "",
+        gambar_produk_4: "",
+        gambar_produk_5: "",
       });
       setShowNotif(true);
       getProduk();
@@ -93,16 +109,67 @@ export default function Formtambahproduk({
             />
           </div>
         </div>
-        <div className="flex flex-col mb-3">
-          <label htmlFor="gambar_produk">Gambar Produk</label>
-          <input
-            onChange={handleOnChange}
-            className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
-            type="text"
-            id="gambar_produk"
-            name="gambar_produk"
-            defaultValue={data.gambar_produk}
-          />
+
+        <div className="sm:grid sm:grid-cols-3 sm:gap-3 my-2">
+          <div className="flex flex-col mb-3">
+            <label htmlFor="gambar_produk">Gambar Produk 1</label>
+            <input
+              onChange={handleOnChange}
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              type="text"
+              id="gambar_produk"
+              name="gambar_produk"
+              defaultValue={data.gambar_produk}
+            />
+          </div>
+
+          <div className="flex flex-col mb-3">
+            <label htmlFor="gambar_produk_2">Gambar Produk 2</label>
+            <input
+              onChange={handleOnChange}
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              type="text"
+              id="gambar_produk_2"
+              name="gambar_produk_2"
+              defaultValue={data.gambar_produk_2}
+            />
+          </div>
+
+          <div className="flex flex-col mb-3">
+            <label htmlFor="gambar_produk_3">Gambar Produk 3</label>
+            <input
+              onChange={handleOnChange}
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              type="text"
+              id="gambar_produk_3"
+              name="gambar_produk_3"
+              defaultValue={data.gambar_produk_3}
+            />
+          </div>
+
+          <div className="flex flex-col mb-3">
+            <label htmlFor="gambar_produk_4">Gambar Produk 4</label>
+            <input
+              onChange={handleOnChange}
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              type="text"
+              id="gambar_produk_4"
+              name="gambar_produk_4"
+              defaultValue={data.gambar_produk_4}
+            />
+          </div>
+
+          <div className="flex flex-col mb-3">
+            <label htmlFor="gambar_produk_5">Gambar Produk 5</label>
+            <input
+              onChange={handleOnChange}
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              type="text"
+              id="gambar_produk_5"
+              name="gambar_produk_5"
+              defaultValue={data.gambar_produk_5}
+            />
+          </div>
         </div>
 
         <div className="flex flex-col mb-3">

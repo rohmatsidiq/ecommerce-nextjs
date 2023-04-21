@@ -86,7 +86,7 @@ export default function Admin() {
               <FcMenu />
             </button>
           </div>
-          <div className="p-4 overflow-y-scroll">
+          <div className="p-4 max-h-screen overflow-y-scroll">
             {card == "produk" && <AdminProduk setCard={setCard} />}
             {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
             {card == "formtambahproduk" && (

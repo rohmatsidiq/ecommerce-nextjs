@@ -7,6 +7,10 @@ export default function handler(req, res) {
   const stock_produk = req.body.stock_produk;
   const deskripsi_produk = req.body.deskripsi_produk;
   const gambar_produk = req.body.gambar_produk;
+  const gambar_produk_2 = req.body.gambar_produk_2;
+  const gambar_produk_3 = req.body.gambar_produk_3;
+  const gambar_produk_4 = req.body.gambar_produk_4;
+  const gambar_produk_5 = req.body.gambar_produk_5;
   const harga_produk = req.body.harga_produk;
   const harga_produk_display = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -15,7 +19,7 @@ export default function handler(req, res) {
 
   if (method === "PUT") {
     pool.query(
-      `UPDATE produk SET nama_produk='${nama_produk}', deskripsi_produk='${deskripsi_produk}', harga_produk=${harga_produk}, harga_produk_display='${harga_produk_display}', gambar_produk='${gambar_produk}', stock_produk=${stock_produk} WHERE id_produk=${id}`,
+      `UPDATE produk SET nama_produk='${nama_produk}', deskripsi_produk='${deskripsi_produk}', harga_produk=${harga_produk}, harga_produk_display='${harga_produk_display}', gambar_produk='${gambar_produk}', gambar_produk_2='${gambar_produk_2}', gambar_produk_3='${gambar_produk_3}', gambar_produk_4='${gambar_produk_4}', gambar_produk_5='${gambar_produk_5}', stock_produk=${stock_produk} WHERE id_produk=${id}`,
       (err, result) => {
         if (err) {
           res.json({
@@ -24,14 +28,7 @@ export default function handler(req, res) {
         }
         res.json({
           message: "Berhasil menyimpan data",
-          data: {
-            nama_produk: nama_produk,
-            deskripsi_produk: deskripsi_produk,
-            harga_produk: harga_produk,
-            harga_produk_display: harga_produk_display,
-            gambar_produk: gambar_produk,
-            stock_produk: stock_produk,
-          },
+          data: result,
         });
       }
     );
