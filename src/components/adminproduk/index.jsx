@@ -106,7 +106,7 @@ export default function AdminProduk() {
                     <p className="">{e.nama_produk}</p>
                     <p className="">Stock: {e.stock_produk} pcs</p>
                     <p className="">{e.harga_produk_display}</p>
-                    <div className="w-full flex">
+                    <div className="w-full flex sm:justify-end">
                       <button
                         onClick={() => {
                           setShowFormEdit(true);
