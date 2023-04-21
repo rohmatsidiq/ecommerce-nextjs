@@ -20,7 +20,7 @@ export default function Confirmdelete({
       getProduk();
       setTimeout(() => {
         setShowNotif(false);
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }

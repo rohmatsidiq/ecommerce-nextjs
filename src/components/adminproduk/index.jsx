@@ -13,9 +13,7 @@ export default function AdminProduk() {
   const [showFormTambahProduk, setShowFormTambahProduk] = useState(false);
   const getProduk = async () => {
     try {
-      const result = await axios.get(
-        "../api/produk/get-produk"
-      );
+      const result = await axios.get("/api/produk/get-produk");
       setProduk(result.data.data);
     } catch (error) {
       console.log(error);
@@ -95,10 +93,10 @@ export default function AdminProduk() {
             <div key={e.id_produk} className="bg-white rounded-2xl p-3 mb-3">
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-4 sm:col-span-1">
-                  <div className="w-full h-full">
+                  <div className="w-full h-20">
                     <img
                       className="w-full h-full object-cover rounded-2xl"
-                      src="https://jualanku.link/admin/get_file/c93d35201c4a11edba7fe7146056076c_2509.png"
+                      src={e.gambar_produk}
                       alt=""
                     />
                   </div>

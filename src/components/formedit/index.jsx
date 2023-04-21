@@ -27,15 +27,14 @@ export default function Formedit({
       setData({ ...data, stock_produk: e.target.value });
     } else if (e.target.name == "deskripsi_produk") {
       setData({ ...data, deskripsi_produk: e.target.value });
+    } else if (e.target.name == "gambar_produk") {
+      setData({ ...data, gambar_produk: e.target.value });
     }
   };
 
   const handleSave = async () => {
     try {
-      await axios.put(
-        `../api/produk/put-produk/${idProduk}`,
-        data
-      );
+      await axios.put(`/api/produk/put-produk/${idProduk}`, data);
       setData({
         nama_produk: "",
         harga_produk: "",
@@ -49,7 +48,7 @@ export default function Formedit({
         getProduk();
         setShowNotif(false);
         setShowFormEdit(false);
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +62,7 @@ export default function Formedit({
   const getData = async () => {
     try {
       const result = await axios.get(
-        `../api/produk/get-produk-by-id/${idProduk}`
+        `/api/produk/get-produk-by-id/${idProduk}`
       );
       setData(result.data.data[0]);
     } catch (error) {
@@ -75,10 +74,12 @@ export default function Formedit({
     getData();
   }, []);
 
+  console.log(data);
+
   return (
-    <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="absolute w-screen h-screen overflow-y-scroll top-0 left-0 bg-black bg-opacity-50 z-50 p-4">
       {showNotif && <Notif content="Produk Berhasil Diedit" />}
-      <div className="bg-white p-5 rounded-3xl">
+      <div className="bg-white p-5 rounded-3xl max-w-2xl mx-auto">
         <h1 className="text-center text-2xl">Edit Produk</h1>
         <div className="flex flex-col mb-3">
           <label htmlFor="nama_produk">Nama Produk</label>
@@ -115,6 +116,17 @@ export default function Formedit({
               defaultValue={data.stock_produk}
             />
           </div>
+        </div>
+        <div className="flex flex-col mb-3">
+          <label htmlFor="gambar_produk">Gambar Produk</label>
+          <input
+            onChange={handleOnChange}
+            className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+            type="text"
+            id="gambar_produk"
+            name="gambar_produk"
+            defaultValue={data.gambar_produk}
+          />
         </div>
 
         <div className="flex flex-col mb-3">

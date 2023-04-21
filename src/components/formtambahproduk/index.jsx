@@ -25,12 +25,14 @@ export default function Formtambahproduk({
       setData({ ...data, stock_produk: e.target.value });
     } else if (e.target.name == "deskripsi_produk") {
       setData({ ...data, deskripsi_produk: e.target.value });
+    } else if (e.target.name == "gambar_produk") {
+      setData({ ...data, gambar_produk: e.target.value });
     }
   };
 
   const handleSave = async () => {
     try {
-      await axios.post("../api/produk/post-produk", data);
+      await axios.post("api/produk/post-produk", data);
       setData({
         nama_produk: "",
         harga_produk: "",
@@ -44,16 +46,16 @@ export default function Formtambahproduk({
       setTimeout(() => {
         setShowFormTambahProduk(false);
         setShowNotif(false);
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="absolute w-screen h-screen overflow-y-scroll top-0 left-0 bg-black bg-opacity-50 p-4 shadow-xl z-50">
       {showNotif && <Notif content="Produk Berhasil Ditambah" />}
-      <div className="bg-white p-5 rounded-3xl">
+      <div className="bg-white p-5 rounded-3xl max-w-2xl mx-auto">
         <h1 className="text-center text-2xl">Tambah Produk</h1>
         <div className="flex flex-col mb-3">
           <label htmlFor="nama_produk">Nama Produk</label>
@@ -90,6 +92,17 @@ export default function Formtambahproduk({
               defaultValue={data.stock_produk}
             />
           </div>
+        </div>
+        <div className="flex flex-col mb-3">
+          <label htmlFor="gambar_produk">Gambar Produk</label>
+          <input
+            onChange={handleOnChange}
+            className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+            type="text"
+            id="gambar_produk"
+            name="gambar_produk"
+            defaultValue={data.gambar_produk}
+          />
         </div>
 
         <div className="flex flex-col mb-3">

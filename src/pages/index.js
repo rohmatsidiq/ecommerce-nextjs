@@ -31,7 +31,7 @@ export default function Home() {
               id={item.id_produk}
               namaProduk={item.nama_produk}
               hargaProduk={item.harga_produk_display}
-              gambar="https://jualanku.link/admin/get_file/c93d35201c4a11edba7fe7146056076c_2509.png"
+              gambar={item.gambar_produk}
             />
           ))}
         </div>

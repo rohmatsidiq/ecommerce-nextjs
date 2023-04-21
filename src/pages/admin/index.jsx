@@ -1,4 +1,9 @@
-import { AdminProduk, AdminTambahProduk, HeadComponent } from "@/components";
+import {
+  AdminProduk,
+  AdminTambahProduk,
+  Formtambahproduk,
+  HeadComponent,
+} from "@/components";
 import React, { useState } from "react";
 import {
   FcHome,
@@ -15,14 +20,14 @@ export default function Admin() {
     setShowNav(!showNav);
   };
   return (
-    <div>
+    <div className="min-h-screen overflow-x-hidden relative">
       <HeadComponent title="Halaman Admin" />
       <div className="flex">
         <div
           className={
             showNav
               ? "bg-white min-h-screen w-60 shadow-xl px-4 sm:static fixed z-50"
-              : "bg-white min-h-screen w-60 shadow-xl px-4 sm:inline-block fixed sm:static hidden"
+              : "bg-white min-h-screen h-full w-60 shadow-xl px-4 sm:block fixed sm:static hidden"
           }
         >
           <h1 className="text-center font-bold text-3xl my-5 text-sky-500">
@@ -81,9 +86,12 @@ export default function Admin() {
               <FcMenu />
             </button>
           </div>
-          <div className="p-4">
+          <div className="p-4 overflow-y-scroll">
             {card == "produk" && <AdminProduk setCard={setCard} />}
             {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
+            {card == "formtambahproduk" && (
+              <Formtambahproduk setCard={setCard} />
+            )}
           </div>
         </div>
       </div>
