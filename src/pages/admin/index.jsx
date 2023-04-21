@@ -1,4 +1,5 @@
 import {
+  AdminDashboard,
   AdminProduk,
   AdminTambahProduk,
   Formtambahproduk,
@@ -87,6 +88,7 @@ export default function Admin() {
             </button>
           </div>
           <div className="p-4 max-h-screen overflow-y-scroll">
+            {card === "dashboard" && <AdminDashboard />}
             {card == "produk" && <AdminProduk setCard={setCard} />}
             {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
             {card == "formtambahproduk" && (

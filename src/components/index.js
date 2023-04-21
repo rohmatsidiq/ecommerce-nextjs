@@ -7,6 +7,7 @@ import Notif from "./notif";
 import Formedit from "./formedit";
 import Confirmdelete from "./confirmdelete";
 import Formtambahproduk from "./formtambahproduk";
+import AdminDashboard from "./admindashboard";
 
 export {
   HeadComponent,
@@ -18,4 +19,5 @@ export {
   Formedit,
   Confirmdelete,
   Formtambahproduk,
+  AdminDashboard,
 };
