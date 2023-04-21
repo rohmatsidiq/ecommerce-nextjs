@@ -90,7 +90,7 @@ export default function AdminProduk() {
               : i.nama_produk.toLowerCase().includes(search);
           })
           .map((e) => (
-            <div key={e.id_produk} className="bg-white rounded-2xl p-3 mb-3">
+            <div key={e.id_produk} className="bg-white rounded-2xl p-3 mb-3 border">
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-4 sm:col-span-1">
                   <div className="w-full h-20">

@@ -78,8 +78,8 @@ export default function Admin() {
             Logout
           </button>
         </div>
-        <div className="w-full">
-          <div className="bg-gray-200 px-2">
+        <div className="w-full fixed sm:static top-0">
+          <div className="bg-gray-100 px-2">
             <button
               onClick={handleShowNav}
               className="text-3xl p-1 rounded-lg sm:hidden"
