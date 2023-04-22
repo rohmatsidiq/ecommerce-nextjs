@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { HeadComponent, Navbar } from "@/components";
-import axios from "axios";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { BiCartDownload } from "react-icons/bi";
+import axios from "axios";
 
 function DetailProduk() {
   const [amount, setAmount] = useState(1);
@@ -37,14 +36,8 @@ function DetailProduk() {
     }
   };
 
-  const tambah = () => {
-    setAmount(amount + 1);
-  };
-
-  const kurangi = () => {
-    if (amount > 1) {
-      setAmount(amount - 1);
-    }
+  const handleChangeAmount = (e) => {
+    setAmount(e.target.value);
   };
 
   useEffect(() => {
@@ -94,30 +87,21 @@ function DetailProduk() {
               <h3 className="text-xl">Detail Pembelian</h3>
               <div className="flex items-center gap-2 justify-between mt-4">
                 <p>Jumlah:</p>
-                <div className="flex w-full justify-between gap-2">
-                  <button
-                    onClick={kurangi}
-                    className="bg-sky-500 rounded-full px-3 text-white hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-300"
-                  >
-                    <AiOutlineMinus />
-                  </button>
-                  <input
-                    value={amount}
-                    type="number"
-                    className="w-full border rounded-full px-3 py-1 focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
-                  />
-                  <button
-                    onClick={tambah}
-                    className="bg-sky-500 text-white rounded-full px-3 hover:shadow-lg hover:shadow-sky-300"
-                  >
-                    <AiOutlinePlus />
-                  </button>
-                </div>
+                <input
+                  onChange={handleChangeAmount}
+                  value={amount}
+                  type="number"
+                  className="w-full border rounded-full px-3 py-1 focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
+                />
               </div>
               <button className="bg-sky-500 w-full mt-4 p-2 rounded-full text-white hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-300 flex items-center justify-center gap-2">
                 <BiCartDownload className="text-2xl" />
                 Add to cart
               </button>
+              <div className="flex justify-around mt-3">
+                <button className="text-orange-500 underline">Shopee</button>
+                <button className="text-green-500 underline">Tokopedia</button>
+              </div>
             </div>
           </div>
         </div>

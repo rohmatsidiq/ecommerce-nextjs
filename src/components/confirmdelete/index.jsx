@@ -1,5 +1,5 @@
 import React from "react";
-import { FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { FiCheck, FiX } from "react-icons/fi";
 import axios from "axios";
 
 export default function Confirmdelete({
@@ -36,14 +36,14 @@ export default function Confirmdelete({
             }}
             className="px-2 py-1 border-2 text-sky-500 border-sky-500 rounded-full hover:bg-sky-600 hover:text-white hover:border-sky-600 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
           >
-            <FiXCircle className="text-2xl" />
+            <FiX className="text-2xl" />
             No
           </button>
           <button
             onClick={handleDelete}
             className="px-2 py-1 border-2 border-sky-500 hover:border-sky-600 rounded-full bg-sky-500 hover:bg-sky-600 text-white hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
           >
-            <FiCheckCircle className="text-2xl" />
+            <FiCheck className="text-2xl" />
             Yes
           </button>
         </div>

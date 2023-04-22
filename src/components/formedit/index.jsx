@@ -90,8 +90,6 @@ export default function Formedit({
     getData();
   }, []);
 
-  console.log(data);
-
   return (
     <div className="absolute w-screen h-screen m-0 overflow-y-scroll top-0 left-0 bg-black bg-opacity-50 z-50 p-4">
       {showNotif && <Notif content="Produk Berhasil Diedit" />}
