@@ -187,12 +187,12 @@ export default function Formtambahproduk({
           ></textarea>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-3">
           <button
             onClick={() => {
               setShowFormTambahProduk(false);
             }}
-            className="bg-sky-500 text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+            className="bg-sky-500 w-full text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
           >
             <AiOutlineClose className="text-2xl" />
             Batal
@@ -200,7 +200,7 @@ export default function Formtambahproduk({
 
           <button
             onClick={handleSave}
-            className="bg-sky-500 text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+            className="bg-sky-500 w-full text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
           >
             <AiFillSave className="text-2xl" />
             Simpan

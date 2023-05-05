@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiFillDelete, AiFillEdit, AiFillPlusCircle } from "react-icons/ai";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { Confirmdelete, Formedit, Formtambahproduk, Notif } from "..";
 
 export default function AdminProduk() {
@@ -65,21 +67,21 @@ export default function AdminProduk() {
         />
       )}
       <h1 className="text-2xl font-bold mb-3">Produk</h1>
-      <div className="flex gap-2 items-center mb-3">
+      <div className="grid grid-cols-5 gap-2 items-center mb-3">
         <input
           type="text"
           onChange={handleSearch}
           placeholder="Cari"
-          className="px-4 py-2 w-full rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
+          className="px-4 col-span-4 py-2 rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-100"
         />
         <button
           onClick={() => {
             setShowFormTambahProduk(true);
           }}
-          className="bg-sky-500 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-300 flex items-center gap-1 hover:scale-105"
+          className="bg-sky-500 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-100 flex items-center gap-1 hover:scale-105 justify-center"
         >
           <AiFillPlusCircle className="text-xl" />
-          Tambah
+          Tambah Produk
         </button>
       </div>
       <div>
@@ -90,7 +92,10 @@ export default function AdminProduk() {
               : i.nama_produk.toLowerCase().includes(search);
           })
           .map((e) => (
-            <div key={e.id_produk} className="bg-white rounded-2xl p-3 mb-3 border">
+            <div
+              key={e.id_produk}
+              className="bg-white rounded-2xl p-3 mb-3 border"
+            >
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-4 sm:col-span-1">
                   <div className="w-full h-20">
@@ -112,17 +117,17 @@ export default function AdminProduk() {
                           setShowFormEdit(true);
                           setIdProduk(e.id_produk);
                         }}
-                        className="bg-yellow-400 py-1 px-3 m-1  rounded-full text-white hover:shadow-lg hover:shadow-yellow-300 hover:scale-105 flex items-center gap-1"
+                        className="bg-green-600 hover:bg-green-500 p-2 m-1 rounded-full text-white hover:shadow-lg hover:shadow-green-200 hover:scale-105 flex items-center gap-1"
                       >
-                        <AiFillEdit className="text-xl" /> Edit
+                        <MdOutlineModeEdit className="text-lg" />
                       </button>
                       <button
                         onClick={() => {
                           deleteProduk(e.id_produk);
                         }}
-                        className="bg-red-500 py-1 px-3 m-1  rounded-full text-white hover:shadow-lg hover:shadow-red-300 hover:scale-105 flex items-center gap-1"
+                        className="bg-red-600 hover:bg-red-500 p-2 m-1 rounded-full text-white hover:shadow-lg hover:shadow-red-200 hover:scale-105 flex items-center gap-1"
                       >
-                        <AiFillDelete className="text-xl" /> Hapus
+                        <RiDeleteBin5Line className="text-lg" />
                       </button>
                     </div>
                   </div>

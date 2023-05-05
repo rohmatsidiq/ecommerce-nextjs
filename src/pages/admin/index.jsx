@@ -27,19 +27,21 @@ export default function Admin() {
         <div
           className={
             showNav
-              ? "bg-white min-h-screen w-60 shadow-xl px-4 sm:static fixed z-50"
-              : "bg-white min-h-screen h-full w-60 shadow-xl px-4 sm:block fixed sm:static hidden"
+              ? "bg-slate-800 text-sm text-white min-h-screen w-60 shadow-xl px-4 sm:static fixed z-50"
+              : "bg-slate-800 text-sm text-white min-h-screen h-full w-60 shadow-xl px-4 sm:block fixed sm:static hidden"
           }
         >
-          <h1 className="text-center font-bold text-3xl my-5 text-sky-500">
-            Logo
-          </h1>
+          <img src="./logo.png" alt="logo" className="p-3 my-3" />
           <button
             onClick={() => {
               setShowNav(false);
               setCard("dashboard");
             }}
-            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            className={
+              card === "dashboard"
+                ? "hover:translate-x-2 bg-slate-700 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+                : "hover:translate-x-2 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            }
           >
             <FcHome className="text-2xl" />
             Dashboard
@@ -49,7 +51,11 @@ export default function Admin() {
               setShowNav(false);
               setCard("produk");
             }}
-            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            className={
+              card === "produk"
+                ? "hover:translate-x-2 bg-slate-700 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+                : "hover:translate-x-2 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            }
           >
             <FcShop className="text-2xl" />
             Produk
@@ -57,24 +63,32 @@ export default function Admin() {
           <button
             onClick={() => {
               setShowNav(false);
-              setCard("transaksi");
+              setCard("penjualan");
             }}
-            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            className={
+              card === "penjualan"
+                ? "hover:translate-x-2 bg-slate-700 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+                : "hover:translate-x-2 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            }
           >
             <FcSalesPerformance className="text-2xl" />
-            Transaksi
+            Penjualan
           </button>
           <button
             onClick={() => {
               setShowNav(false);
               setCard("pelanggan");
             }}
-            className="hover:translate-x-1 hover:bg-slate-100 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            className={
+              card === "pelanggan"
+                ? "hover:translate-x-2 bg-slate-700 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+                : "hover:translate-x-2 hover:bg-slate-700 rounded-xl py-2 px-3 duration-150 flex gap-1 items-center w-full"
+            }
           >
             <FcConferenceCall className="text-2xl" />
             Pelanggan
           </button>
-          <button className="bg-red-500 text-white w-full py-2 rounded-full hover:bg-red-600 hover:shadow-lg hover:shadow-red-200 mt-3 hover:scale-105">
+          <button className="bg-red-600 text-white w-full py-2 rounded-full hover:bg-red-600 hover:shadow-lg hover:shadow-red-800 mt-3 hover:scale-105">
             Logout
           </button>
         </div>
@@ -87,7 +101,7 @@ export default function Admin() {
               <FcMenu />
             </button>
           </div>
-          <div className="p-4 max-h-screen overflow-y-scroll">
+          <div className="p-4 max-h-screen overflow-y-scroll text-sm h-screen">
             {card === "dashboard" && <AdminDashboard />}
             {card == "produk" && <AdminProduk setCard={setCard} />}
             {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
