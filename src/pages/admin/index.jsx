@@ -88,7 +88,7 @@ export default function Admin() {
             <FcConferenceCall className="text-2xl" />
             Pelanggan
           </button>
-          <button className="bg-red-600 text-white w-full py-2 rounded-full hover:bg-red-600 hover:shadow-lg hover:shadow-red-800 mt-3 hover:scale-105">
+          <button className="bg-red-600 hover:bg-red-500 text-white w-full py-2 rounded-full hover:shadow-lg hover:shadow-red-700 mt-3">
             Logout
           </button>
         </div>
@@ -104,10 +104,6 @@ export default function Admin() {
           <div className="p-4 max-h-screen overflow-y-scroll text-sm h-screen">
             {card === "dashboard" && <AdminDashboard />}
             {card == "produk" && <AdminProduk setCard={setCard} />}
-            {card == "tambahproduk" && <AdminTambahProduk setCard={setCard} />}
-            {card == "formtambahproduk" && (
-              <Formtambahproduk setCard={setCard} />
-            )}
           </div>
         </div>
       </div>

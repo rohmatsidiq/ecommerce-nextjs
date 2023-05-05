@@ -77,7 +77,7 @@ export default function Formtambahproduk({
           <label htmlFor="nama_produk">Nama Produk</label>
           <input
             onChange={handleOnChange}
-            className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+            className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
             type="text"
             id="nama_produk"
             name="nama_produk"
@@ -90,7 +90,7 @@ export default function Formtambahproduk({
             <label htmlFor="harga_produk">Harga Produk</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="number"
               id="harga_produk"
               name="harga_produk"
@@ -101,7 +101,7 @@ export default function Formtambahproduk({
             <label htmlFor="stock_produk">Stock Produk</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="number"
               id="stock_produk"
               name="stock_produk"
@@ -115,7 +115,7 @@ export default function Formtambahproduk({
             <label htmlFor="gambar_produk">Gambar Produk 1</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="text"
               id="gambar_produk"
               name="gambar_produk"
@@ -127,7 +127,7 @@ export default function Formtambahproduk({
             <label htmlFor="gambar_produk_2">Gambar Produk 2</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="text"
               id="gambar_produk_2"
               name="gambar_produk_2"
@@ -139,7 +139,7 @@ export default function Formtambahproduk({
             <label htmlFor="gambar_produk_3">Gambar Produk 3</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="text"
               id="gambar_produk_3"
               name="gambar_produk_3"
@@ -151,7 +151,7 @@ export default function Formtambahproduk({
             <label htmlFor="gambar_produk_4">Gambar Produk 4</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="text"
               id="gambar_produk_4"
               name="gambar_produk_4"
@@ -163,7 +163,7 @@ export default function Formtambahproduk({
             <label htmlFor="gambar_produk_5">Gambar Produk 5</label>
             <input
               onChange={handleOnChange}
-              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+              className="px-3 py-2 mt-2 rounded-full border focus:outline-none focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
               type="text"
               id="gambar_produk_5"
               name="gambar_produk_5"
@@ -179,7 +179,7 @@ export default function Formtambahproduk({
             cols="30"
             rows="10"
             className="px-3 py-2 mt-2 rounded-3xl border focus:outline-none
-            focus:border-sky-200 focus:shadow-md focus:shadow-sky-200"
+            focus:border-sky-200 focus:shadow-lg focus:shadow-sky-100"
             type="text"
             id="deskripsi_produk"
             name="deskripsi_produk"
@@ -192,7 +192,7 @@ export default function Formtambahproduk({
             onClick={() => {
               setShowFormTambahProduk(false);
             }}
-            className="bg-sky-500 w-full text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+            className="text-sky-600 border border-sky-600 hover:border-sky-500 hover:text-sky-500 w-full px-4 py-2 rounded-full hover:shadow-lg hover:shadow-sky-200 flex gap-2 items-center"
           >
             <AiOutlineClose className="text-2xl" />
             Batal
@@ -200,7 +200,7 @@ export default function Formtambahproduk({
 
           <button
             onClick={handleSave}
-            className="bg-sky-500 w-full text-white px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-sky-300 flex gap-2 items-center"
+            className="bg-sky-600 hover:bg-sky-500 w-full text-white px-4 py-2 rounded-full hover:shadow-lg hover:shadow-sky-200 flex gap-2 items-center"
           >
             <AiFillSave className="text-2xl" />
             Simpan

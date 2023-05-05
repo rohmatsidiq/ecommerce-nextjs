@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiFillPlusCircle } from "react-icons/ai";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { Confirmdelete, Formedit, Formtambahproduk, Notif } from "..";
@@ -72,15 +71,14 @@ export default function AdminProduk() {
           type="text"
           onChange={handleSearch}
           placeholder="Cari"
-          className="px-4 col-span-4 py-2 rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-100"
+          className="px-4 col-span-3 sm:col-span-4 py-2 rounded-full border focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-100"
         />
         <button
           onClick={() => {
             setShowFormTambahProduk(true);
           }}
-          className="bg-sky-500 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-100 flex items-center gap-1 hover:scale-105 justify-center"
+          className="bg-sky-600 hover:bg-sky-500 col-span-2 sm:col-span-1 px-3 py-2 rounded-full text-white hover:shadow-lg hover:shadow-sky-100 flex items-center gap-1 justify-center"
         >
-          <AiFillPlusCircle className="text-xl" />
           Tambah Produk
         </button>
       </div>
