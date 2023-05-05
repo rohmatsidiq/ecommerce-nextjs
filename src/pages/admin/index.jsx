@@ -1,11 +1,5 @@
-import {
-  AdminDashboard,
-  AdminProduk,
-  AdminTambahProduk,
-  Formtambahproduk,
-  HeadComponent,
-} from "@/components";
-import React, { useState } from "react";
+import { AdminDashboard, AdminProduk, HeadComponent } from "@/components";
+import { useEffect, useState } from "react";
 import {
   FcHome,
   FcShop,
@@ -13,13 +7,31 @@ import {
   FcConferenceCall,
   FcMenu,
 } from "react-icons/fc";
+import { useRouter } from "next/router";
 
 export default function Admin() {
+  const [loaded, setLoaded] = useState(false);
+  const route = useRouter();
   const [showNav, setShowNav] = useState(false);
   const [card, setCard] = useState("dashboard");
   const handleShowNav = () => {
     setShowNav(!showNav);
   };
+  const handleLogout = () => {
+    localStorage.removeItem("admin");
+    route.push("/");
+  };
+
+  useEffect(() => {
+    if (!localStorage.getItem("admin")) {
+      route.push("/login");
+    } else {
+      setLoaded(true);
+    }
+  });
+  if (!loaded) {
+    return <div className="w-screen h-screen flex justify-center items-center">Loading...</div>;
+  }
   return (
     <div className="min-h-screen overflow-x-hidden relative">
       <HeadComponent title="Halaman Admin" />
@@ -88,7 +100,10 @@ export default function Admin() {
             <FcConferenceCall className="text-2xl" />
             Pelanggan
           </button>
-          <button className="bg-red-600 hover:bg-red-500 text-white w-full py-2 rounded-full hover:shadow-lg hover:shadow-red-700 mt-3">
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 hover:bg-red-500 text-white w-full py-2 rounded-full hover:shadow-lg hover:shadow-red-700 mt-3"
+          >
             Logout
           </button>
         </div>
