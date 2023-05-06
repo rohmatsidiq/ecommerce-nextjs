@@ -30,7 +30,11 @@ export default function Admin() {
     }
   });
   if (!loaded) {
-    return <div className="w-screen h-screen flex justify-center items-center">Loading...</div>;
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        Loading...
+      </div>
+    );
   }
   return (
     <div className="min-h-screen overflow-x-hidden relative">

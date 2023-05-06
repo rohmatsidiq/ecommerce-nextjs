@@ -1,27 +1,12 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { HeadComponent, Navbar } from "@/components";
 import { BiCartDownload } from "react-icons/bi";
 import axios from "axios";
 
-function DetailProduk() {
+function DetailProduk({ id }) {
   const [amount, setAmount] = useState(1);
   const image = [];
-  const router = useRouter();
-  const { id } = router.query;
-  const [data, setData] = useState({
-    nama_produk: "",
-    harga_produk: "",
-    harga_produk_display: "",
-    stock_produk: "",
-    deskripsi_produk: "",
-    gambar_produk: "",
-    gambar_produk_2: "",
-    gambar_produk_3: "",
-    gambar_produk_4: "",
-    gambar_produk_5: "",
-  });
-
+  const [data, setData] = useState({});
   const [count, setCount] = useState(1);
   const handleChangeImage = (index) => {
     setCount(index + 1);
@@ -30,6 +15,7 @@ function DetailProduk() {
   const getData = async () => {
     try {
       const result = await axios.get(`/api/produk/get-produk-by-id/${id}`);
+      console.log(result);
       setData(result.data.data[0]);
     } catch (error) {
       console.log(error);
@@ -55,7 +41,7 @@ function DetailProduk() {
       <HeadComponent title="Detail Produk" />
       <Navbar />
       <div className="mt-14 max-w-[1200px] mx-auto p-4">
-        <div className="grid sm:grid-cols-3 gap-4 p-4 rounded-xl">
+        <div className="grid sm:grid-cols-2 gap-4 p-4 rounded-xl">
           <div className="w-full">
             <img
               className="w-full rounded-2xl"
@@ -76,33 +62,44 @@ function DetailProduk() {
               ))}
             </div>
           </div>
+
           <div className="">
             <h1 className="text-3xl">{data.nama_produk}</h1>
             <small className="text-sky-500">Stock: {data.stock_produk}</small>
             <p className="text-2xl">{data.harga_produk_display}</p>
-            <p>{data.deskripsi_produk}</p>
-          </div>
-          <div>
-            <div className="shadow-lg p-4 rounded-xl border border-sky-300">
-              <h3 className="text-xl">Detail Pembelian</h3>
-              <div className="flex items-center gap-2 justify-between mt-4">
-                <p>Jumlah:</p>
-                <input
-                  onChange={handleChangeAmount}
-                  value={amount}
-                  type="number"
-                  className="w-full border rounded-full px-3 py-1 focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
-                />
-              </div>
-              <button className="bg-sky-500 w-full mt-4 p-2 rounded-full text-white hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-300 flex items-center justify-center gap-2">
-                <BiCartDownload className="text-2xl" />
-                Add to cart
-              </button>
-              <div className="flex justify-around mt-3">
-                <button className="text-orange-500 underline">Shopee</button>
-                <button className="text-green-500 underline">Tokopedia</button>
+            <div className="my-3">
+              <div className="shadow-lg p-4 rounded-xl border border-sky-300">
+                <h3 className="text-xl">Detail Pembelian</h3>
+                <div className="flex items-center gap-2 justify-between mt-4">
+                  <p>Jumlah:</p>
+                  <input
+                    onChange={handleChangeAmount}
+                    value={amount}
+                    type="number"
+                    className="w-full border rounded-full px-3 py-1 focus:outline-none focus:border-sky-300 focus:shadow-lg focus:shadow-sky-200"
+                  />
+                </div>
+                <button className="bg-sky-500 w-full mt-4 p-2 rounded-full text-white hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-300 flex items-center justify-center gap-2">
+                  <BiCartDownload className="text-2xl" />
+                  Add to cart
+                </button>
+                <div className="flex justify-around mt-3">
+                  <a
+                    href="https://shopee.co.id/"
+                    className="text-orange-500 underline"
+                  >
+                    Shopee
+                  </a>
+                  <a
+                    href="https://www.tokopedia.com/"
+                    className="text-green-500 underline"
+                  >
+                    Tokopedia
+                  </a>
+                </div>
               </div>
             </div>
+            <p>{data.deskripsi_produk}</p>
           </div>
         </div>
       </div>
@@ -111,3 +108,12 @@ function DetailProduk() {
 }
 
 export default DetailProduk;
+
+export async function getServerSideProps(ctx) {
+  const { id } = ctx.params;
+  return {
+    props: {
+      id: id,
+    },
+  };
+}

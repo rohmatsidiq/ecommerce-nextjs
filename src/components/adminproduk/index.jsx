@@ -98,7 +98,7 @@ export default function AdminProduk() {
                 <div className="col-span-4 sm:col-span-1">
                   <div className="w-full h-20">
                     <img
-                      className="w-full h-full object-cover rounded-2xl"
+                      className="w-full object-cover rounded-2xl"
                       src={e.gambar_produk}
                       alt=""
                     />
@@ -117,15 +117,15 @@ export default function AdminProduk() {
                         }}
                         className="bg-green-600 hover:bg-green-500 p-2 m-1 rounded-full text-white hover:shadow-lg hover:shadow-green-200 hover:scale-105 flex items-center gap-1"
                       >
-                        <MdOutlineModeEdit className="text-lg" />
+                        <MdOutlineModeEdit className="text-sm" />
                       </button>
                       <button
                         onClick={() => {
                           deleteProduk(e.id_produk);
                         }}
-                        className="bg-red-600 hover:bg-red-500 p-2 m-1 rounded-full text-white hover:shadow-lg hover:shadow-red-200 hover:scale-105 flex items-center gap-1"
+                        className="bg-red-600 hover:bg-red-500 p-2 m-1 rounded-full text-white hover:shadow-sm hover:shadow-red-200 hover:scale-105 flex items-center gap-1"
                       >
-                        <RiDeleteBin5Line className="text-lg" />
+                        <RiDeleteBin5Line className="text-sm" />
                       </button>
                     </div>
                   </div>

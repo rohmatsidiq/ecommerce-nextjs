@@ -8,6 +8,7 @@ export default function handler(req, res) {
       if (err) {
         res.json({
           message: "Gagal koneksi ke database",
+          id: id,
         });
       }
       res.json({
